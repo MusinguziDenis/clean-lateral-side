@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    image: musinguzidenis/lateral-text-clean-model:latest  # Replace with your Docker Hub image name
+    container_name: lateral-text-clean-model
+    ports:
+      - "8083:8082"  # Map port 8080 in the container to port 8081 on the host
+    environment:
+      - FLASK_ENV=production  # Set Flask environment to production
+    volumes:
+      - ./logs:/app/logs  # Mount the phi_models directory if needed
+    restart: always  # Ensure the container restarts automatically if it stops
